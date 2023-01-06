@@ -11,7 +11,7 @@ const Layout = ({ children, current }: LayoutProps) => {
     return (
         <Container>
             <NavBar tab={current} />
-            <div className="p-4 w-full rounded-xl bg-slate-100 drop-shadow-lg">
+            <div className="p-4 w-full rounded-xl bg-slate-100 drop-shadow-lg overflow-y-auto ">
 
                 {children}
             </div>
