@@ -27,9 +27,9 @@ const navList = [
 
 const NavBar = ({ tab }: NavbarProps) => {
     return (
-        <Card override className="mr-2 w-1/4 p-2 pt-5">
-            <CardBody className="h-full">
-                <Stack className=" justify-between h-full">
+        <Card override className="w-1/4 pt-5">
+            <CardBody className="h-full ">
+                <Stack className="justify-between h-full">
                     <Stack spacing="lg">
                         {navList.map((nav) => {
                             return (
