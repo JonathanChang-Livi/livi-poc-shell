@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children, className, override, style }: ContainerProps & ComponentProps) => {
-    const containerClass = 'container m-auto h-[90vh] bg-white rounded-xl drop-shadow-lg mt-4 flex flex-row'
+    const containerClass = 'm-0 md:m-auto w-full md:w-[90vw] h-[100vh] md:h-full bg-white rounded-none md:rounded-xl drop-shadow-lg md:mt-4 flex flex-col'
     return (
         <div className={`${override && override ? '' : containerClass} ${className}`} style={style}>
             {children}

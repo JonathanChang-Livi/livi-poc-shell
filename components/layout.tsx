@@ -1,5 +1,6 @@
 import React from "react"
 import Container from "./container"
+import HeaderBar from "./header"
 import NavBar from "./navbar"
 
 interface LayoutProps {
@@ -10,10 +11,14 @@ interface LayoutProps {
 const Layout = ({ children, current }: LayoutProps) => {
     return (
         <Container>
-            <NavBar tab={current} />
-            <div className="p-4 w-full rounded-xl bg-slate-100 drop-shadow-lg overflow-y-auto ">
+            <HeaderBar />
+            <div className="flex flex-row">
 
-                {children}
+                <NavBar tab={current} />
+                <div className="p-4 w-full rounded-xl bg-slate-100 drop-shadow-lg overflow-y-auto ">
+
+                    {children}
+                </div>
             </div>
         </Container>
     )
