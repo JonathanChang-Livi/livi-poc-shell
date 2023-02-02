@@ -9,6 +9,8 @@ const Home: NextPage = () => {
         className='text-2xl my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white pt-8  
         h-full overflow-y-auto grid grid-cols-12 col-span-2 col-span-6
         bg-secondary
+        gap-2
+        text-slate-400 group-hover:text-white mx-3
         text-primary text-secondary
       w-full gap-5 text-secondary text-sm font-semibold mt-4 gap-3 gap-4
       bg-gradient-to-tr from-primary via-primary to-secondary-dark h-full justify-between items-end justify-end
