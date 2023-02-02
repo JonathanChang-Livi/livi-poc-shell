@@ -27,16 +27,16 @@ const NavTab = ({ tab, current, title, icon }: NavTabProps) => {
 
 const iconClass = "text-slate-400 group-hover:text-white mx-3"
 const DEFAULT_NAV: NavTabProps[] = [
-    { tab: 'overview', title: 'Overview', icon: <IconChartPieFilled size={24} className={iconClass}/> },
-    { tab: 'transfer', title: 'Transfer', icon: <IconTicket size={24} className={iconClass}/> },
-    { tab: 'transactions', title: 'Transactions', icon: <IconArrowsDiff size={24} className={iconClass}/> },
-    { tab: 'invoices', title: 'Invoices', icon: <IconBulbFilled size={24} className={iconClass}/> },
-    { tab: 'loan', title: 'Loans', icon: <IconMoneybag size={24} className={iconClass}/> },
-    { tab: 'manage-supplier', title: 'Manage Supplier', icon: <IconFriends size={24} className={iconClass}/> },
-    { tab: 'statement', title: 'Statement', icon: <IconFileText size={24} className={iconClass}/> },
-    { tab: 'workstation', title: 'Workstation', icon: <IconBriefcase size={24} className={iconClass}/> },
-    { tab: 'settings', title: 'Settings', icon: <IconSettingsFilled size={24} className={iconClass}/> },
-    { tab: 'help-center', title: 'Help Center', icon: <IconZoomQuestion size={24} className={iconClass}/> },
+    { tab: 'overview', title: 'Overview', icon: <IconChartPieFilled size={24} className={iconClass} /> },
+    { tab: 'transfer', title: 'Transfer', icon: <IconTicket size={24} className={iconClass} /> },
+    { tab: 'transactions', title: 'Transactions', icon: <IconArrowsDiff size={24} className={iconClass} /> },
+    { tab: 'invoices', title: 'Invoices', icon: <IconBulbFilled size={24} className={iconClass} /> },
+    { tab: 'loan', title: 'Loans', icon: <IconMoneybag size={24} className={iconClass} /> },
+    { tab: 'manage-supplier', title: 'Manage Supplier', icon: <IconFriends size={24} className={iconClass} /> },
+    { tab: 'statement', title: 'Statement', icon: <IconFileText size={24} className={iconClass} /> },
+    { tab: 'workstation', title: 'Workstation', icon: <IconBriefcase size={24} className={iconClass} /> },
+    { tab: 'settings', title: 'Settings', icon: <IconSettingsFilled size={24} className={iconClass} /> },
+    { tab: 'help-center', title: 'Help Center', icon: <IconZoomQuestion size={24} className={iconClass} /> },
 ]
 
 const NavBar = ({ current, navs }: NavbarProps) => {
@@ -52,13 +52,16 @@ const NavBar = ({ current, navs }: NavbarProps) => {
                 </p>
                 <Button override className="rounded-full w-auto px-2 text-sm bg-slate-100 text-primary">Switch Account</Button>
             </div>
-            {
-                list.map(nav => {
-                    return (
-                        <NavTab tab={nav.tab} title={nav.title} current={current} icon={nav.icon} />
-                    )
-                })
-            }
+            <div className="overflow-y-auto">
+
+                {
+                    list.map(nav => {
+                        return (
+                            <NavTab tab={nav.tab} title={nav.title} current={current} icon={nav.icon} />
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
