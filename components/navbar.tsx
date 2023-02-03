@@ -42,7 +42,7 @@ const DEFAULT_NAV: NavTabProps[] = [
 const NavBar = ({ current, navs }: NavbarProps) => {
     const list = navs || DEFAULT_NAV
     return (
-        <div className="hidden md:flex w-60 flex-col bg-slate-700 h-full">
+        <div className="hidden md:flex w-60 flex-col bg-slate-700">
             <div className=" h-48 flex flex-col items-center justify-around p-3">
                 <div className=" rounded-full w-14 h-14 bg-slate-300 flex justify-center items-center">
                     <p className=" font-bold text-primary w-auto text-2xl">A</p>

@@ -5,14 +5,16 @@
     "build": "next build",
     "start": "next start"
   },
+  "peerDependencies": {
+    "next": "latest",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
   "dependencies": {
     "@module-federation/nextjs-mf": "^6.0.1",
     "@tabler/icons": "^2.1.1",
     "@tabler/icons-react": "^2.1.2",
-    "livi-poc-core": "^0.1.3",
-    "next": "latest",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "livi-poc-core": "^0.1.3"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
