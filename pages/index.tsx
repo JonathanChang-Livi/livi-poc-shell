@@ -11,6 +11,7 @@ const Home: NextPage = () => {
         bg-secondary
         gap-2
         text-slate-400 group-hover:text-white mx-3
+        bg-slate-200 border-slate-100 shadow-lg  h-[100vh] text-slate-600 text-slate-700 text-2xl items-end grid-cols-3 p-5
         text-primary text-secondary
       w-full gap-5 text-secondary text-sm font-semibold mt-4 gap-3 gap-4
       bg-gradient-to-tr from-primary via-primary to-secondary-dark h-full justify-between items-end justify-end
