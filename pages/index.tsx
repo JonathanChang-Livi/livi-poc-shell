@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         className='text-2xl my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white pt-8  
         h-full overflow-y-auto grid grid-cols-12 col-span-2 col-span-6
         bg-secondary
-        gap-2 bg-center bg-cover
+        gap-2 bg-center bg-cover m-auto
         bg-[#EEB155] bg-[#A796CC] bg-[#88b1DB] bg-[#CD808B] bg-[#D3BC8D] w-3 h-3 rounded-full
         absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-black text-left font-normal  relative max-w-[150px]
     w-full h-full grid grid-cols-2 gap-5 my-1 my-2 h-[1px] text-blue-600 bg-primary bg-secondary
