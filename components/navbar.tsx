@@ -1,5 +1,6 @@
 import { IconArrowsDiff, IconBriefcase, IconBulbFilled, IconChartPieFilled, IconFileText, IconFriends, IconMoneybag, IconSettingsFilled, IconTicket, IconZoomQuestion } from "@tabler/icons-react"
 import { Button, Card, CardBody, Stack, Title } from "livi-poc-core"
+import Link from "next/link"
 import React from "react"
 
 interface NavbarProps {
@@ -12,16 +13,26 @@ interface NavTabProps {
     title: string
     current?: string
     icon?: React.ReactNode
+    children?: NavTabProps | NavTabProps[]
 }
 
-const NavTab = ({ tab, current, title, icon }: NavTabProps) => {
+const NavTab = ({ tab, current, title, icon, children }: NavTabProps) => {
     const isCurrent = !current ? false : current == tab
+    if (children) {
+        return (
+            <div className={`flex flex-row items-center group w-full p-3 ${tab === current ? 'border-l-4 bg-opacity-20 bg-white' : 'bg-none'} hover:border-l-4 border-white`}>
+                {icon}
+                <Title className={`select-none whitespace-nowrap text-sm font-bold ${isCurrent ? 'text-white' : ' text-slate-400'} group-hover:text-white`}>{title}</Title>
+            </div>
+        )
+    }
     return (
-        // <div className={`w-full p-4 flex flex-row justify-center hover:border-r-4 border-primary ${tab === current ? 'border-r-4 ' : ''}`}>
-        <div className={`flex flex-row items-center group w-full p-3 ${tab === current ? 'border-l-4 bg-opacity-20 bg-white' : 'bg-none'} hover:border-l-4 border-white`}>
-            {icon}
-            <Title className={`select-none whitespace-nowrap text-sm font-bold ${isCurrent ? 'text-white' : ' text-slate-400'} group-hover:text-white`}>{title}</Title>
-        </div>
+        <Link href={`/${tab}`}>
+            <div className={`flex flex-row items-center group w-full p-3 ${tab === current ? 'border-l-4 bg-opacity-20 bg-white' : 'bg-none'} hover:border-l-4 border-white`}>
+                {icon}
+                <Title className={`select-none whitespace-nowrap text-sm font-bold ${isCurrent ? 'text-white' : ' text-slate-400'} group-hover:text-white`}>{title}</Title>
+            </div>
+        </Link>
     )
 }
 
@@ -48,7 +59,7 @@ const NavBar = ({ current, navs }: NavbarProps) => {
                     <p className=" font-bold text-primary w-auto text-2xl">A</p>
                 </div>
                 <p className="text-center font-black text-xl text-white">
-                    ABC Company Limited
+                    ABC Company Limited {current}
                 </p>
                 <Button override className="rounded-full w-auto px-2 text-sm bg-slate-100 text-primary">Switch Account</Button>
             </div>
