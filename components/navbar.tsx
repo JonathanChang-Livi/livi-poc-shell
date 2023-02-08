@@ -1,6 +1,8 @@
 import { IconArrowsDiff, IconBriefcase, IconBulbFilled, IconChartPieFilled, IconFileText, IconFriends, IconMoneybag, IconSettingsFilled, IconTicket, IconZoomQuestion } from "@tabler/icons-react"
+import { deleteCookie } from "cookies-next"
 import { Button, Card, CardBody, Stack, Title } from "livi-poc-core"
 import Link from "next/link"
+import { Router } from "next/router"
 import React from "react"
 
 interface NavbarProps {
@@ -27,7 +29,7 @@ const NavTab = ({ tab, current, title, icon, children }: NavTabProps) => {
         )
     }
     return (
-        <Link href={`/${tab}`}>
+        <Link href={`/${tab}`} key={tab}>
             <div className={`flex flex-row items-center group w-full p-3 ${tab === current ? 'border-l-4 bg-opacity-20 bg-white' : 'bg-none'} hover:border-l-4 border-white`}>
                 {icon}
                 <Title className={`select-none whitespace-nowrap text-sm font-bold ${isCurrent ? 'text-white' : ' text-slate-400'} group-hover:text-white`}>{title}</Title>
@@ -50,6 +52,11 @@ const DEFAULT_NAV: NavTabProps[] = [
     { tab: 'help-center', title: 'Help Center', icon: <IconZoomQuestion size={24} className={iconClass} /> },
 ]
 
+const logOut = () => {
+    deleteCookie('auth-token')
+    window.location.reload()
+}
+
 const NavBar = ({ current, navs }: NavbarProps) => {
     const list = navs || DEFAULT_NAV
     return (
@@ -63,15 +70,16 @@ const NavBar = ({ current, navs }: NavbarProps) => {
                 </p>
                 <Button override className="rounded-full w-auto px-2 text-sm bg-slate-100 text-primary">Switch Account</Button>
             </div>
-            <div className="overflow-y-auto">
 
-                {
-                    list.map(nav => {
-                        return (
-                            <NavTab tab={nav.tab} title={nav.title} current={current} icon={nav.icon} />
-                        )
-                    })
-                }
+            {
+                list.map(nav => {
+                    return (
+                        <NavTab tab={nav.tab} title={nav.title} current={current} icon={nav.icon} />
+                    )
+                })
+            }
+            <div className="p-4 w-full">
+                <button className="px-4 py-2 w-full rounded-lg bg-secondary text-primary" onClick={logOut}>Log Out</button>
             </div>
         </div>
     )

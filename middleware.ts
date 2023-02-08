@@ -1,8 +1,21 @@
+import { getCookie } from "cookies-next";
 import { NextRequest, NextResponse } from "next/server";
+// import { authState } from "./csm/auth";
 
-export const middleware = (request: NextRequest ) => {
-    console.log(request.nextUrl.pathname)
-    if(request.nextUrl.pathname === '/' || request.nextUrl.pathname === undefined){
-        return NextResponse.rewrite(new URL('/overview', request.url))
+const systemUrl: string[] = ['/_next', '/favicon.ico']
+
+const isSystemUrl = (url: string) => systemUrl.map(x => url.includes(x)).reduce((a, b) => a || b)
+
+export function middleware(request: NextRequest) {
+    // console.log(isSystemUrl(request.url))
+    // console.log(!authState && !isSystemUrl(request.url) && !request.nextUrl.href.includes('/login'), `${request.url}`)
+    if (!isSystemUrl(request.url)) {
+        console.log(request.url, 'request.url')
+        console.log(request.cookies.get('auth-token'), `request.cookies.get('auth-token')`)
+        const authState = request.cookies.get('auth-token')
+        // console.log(authState, 'authState')
+        if (!authState && !request.nextUrl.href.includes('/login')) {
+            return NextResponse.redirect(new URL('/login', request.url))
+        }
     }
 }

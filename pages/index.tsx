@@ -1,12 +1,10 @@
 import type { NextPage } from 'next'
-import { RemoteDashboard } from '../components/dashboard'
 
 const Home: NextPage = () => {
   return (
     <>
 
-      <div style={{ display: 'none' }}
-        className='text-2xl my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white pt-8  
+      <div style={{ display: 'none' }} className='text-2xl my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white pt-8  
         h-full overflow-y-auto grid grid-cols-12 col-span-2 col-span-6
         bg-secondary
         gap-2 bg-center bg-cover m-auto 

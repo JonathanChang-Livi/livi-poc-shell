@@ -11,7 +11,7 @@ const nextConfig = {
         name: 'shell',
         remotes: {
           dashboard: `dashboard@https://livi-poc-dashboard.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
-          // widget2: `widget2@https://livi-poc-widget2.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
+          csm: `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
           // widget3: `widget3@https://livi-poc-widget3.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
         },
         filename: 'static/chunks/remoteEntry.js',
