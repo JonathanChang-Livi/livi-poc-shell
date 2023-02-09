@@ -3,7 +3,7 @@ import LoginCard from "../components/login-card"
 
 const Login: NextPage = () => {
     return (
-        <div className="h-screen p-20 flex flex-row justify-start items-center">
+        <div className="h-screen p-20 flex flex-row justify-start items-center bg-gradient-to-br from-white via-secondary to-primary">
             <div className="w-1/2">
                 <LoginCard />
             </div>

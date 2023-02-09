@@ -10,14 +10,14 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, current, authState }: LayoutProps) => {
-    if(!authState){
+    if (!authState) {
         return (
             <>
-            {children}
+                {children}
             </>
         )
     }
-    
+
     return (
         <Container>
             <HeaderBar />
