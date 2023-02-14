@@ -25,4 +25,20 @@ const Home: NextPage = () => {
   )
 }
 
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+    let authState = ctx.req.cookies['auth-token']
+    if (authState) {
+        return {
+            redirect: {
+                destination: "/overview",
+                permanent: false,
+            },
+        }
+    }
+    return {
+        props: {
+        }
+    }
+}
+
 export default Home
