@@ -67,7 +67,7 @@ const NavBar = ({ current, navs }: NavbarProps) => {
                     <p className=" font-bold text-primary w-auto text-2xl">A</p>
                 </div>
                 <p className="text-center font-black text-xl text-white">
-                    ABC Company Limited {current}
+                    ABC Company Limited
                 </p>
                 <Button override className="rounded-full w-auto px-2 text-sm bg-slate-100 text-primary">Switch Account</Button>
             </div>
