@@ -1,9 +1,12 @@
 import { GetServerSideProps, NextPage } from "next"
 import { CrashedDashboard } from "../components/dashboard"
+import ErrorBoundary from "../components/error-boundary"
 
 const Dashboard: NextPage = () => {
     return (
-        <CrashedDashboard />
+        <ErrorBoundary>
+            <CrashedDashboard />
+        </ErrorBoundary>
     )
 }
 
