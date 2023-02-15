@@ -41,7 +41,7 @@ const NavTab = ({ tab, current, title, icon, children }: NavTabProps) => {
 const iconClass = "text-slate-400 group-hover:text-white mx-3"
 const DEFAULT_NAV: NavTabProps[] = [
     { tab: 'overview', title: 'Overview', icon: <IconChartPieFilled size={24} className={iconClass} /> },
-    { tab: 'overview-crash', title: 'Overview Crashed', icon: <IconCarCrash size={24} className={iconClass} /> },
+    // { tab: 'overview-crash', title: 'Overview Crashed', icon: <IconCarCrash size={24} className={iconClass} /> },
     { tab: 'transfer', title: 'Transfer', icon: <IconTicket size={24} className={iconClass} /> },
     { tab: 'transactions', title: 'Transactions', icon: <IconArrowsDiff size={24} className={iconClass} /> },
     { tab: 'invoices', title: 'Invoices', icon: <IconBulbFilled size={24} className={iconClass} /> },
