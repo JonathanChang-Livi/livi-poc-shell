@@ -24,6 +24,7 @@ export const getServerSideProps: GetServerSideProps = withSessionSsr(
         return {
             props: {
                 current: 'overview-crash',
+                authState: true
             }
         }
     }

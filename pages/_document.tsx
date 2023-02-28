@@ -9,7 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <script src="https://livi-poc-dashboard.vercel.app/_next/static/chunks/remoteEntry.js" />
+        {/* <script src="https://livi-poc-dashboard.vercel.app/_next/static/chunks/remoteEntry.js" /> */}
         {/* <script src="https://livi-poc-csm.vercel.app/_next/static/chunks/remoteEntry.js" /> */}
         <Head />
         <body>

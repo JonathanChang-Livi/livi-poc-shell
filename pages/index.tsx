@@ -1,6 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next'
-//@ts-ignore
-import { useAuthState } from "csm/useAuthState"
+import { withSessionSsr } from '../lib/with-session'
 
 const Home: NextPage = () => {
   return (
@@ -27,21 +26,23 @@ const Home: NextPage = () => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    let authState = ctx.req.cookies['auth-token']
-    const auth = useAuthState()
-    if (authState) {
-        return {
-            redirect: {
-                destination: "/overview",
-                permanent: false,
-            },
-        }
+export const getServerSideProps: GetServerSideProps = withSessionSsr(
+  async function getServerSideProps({ req }) {
+    if (req.session.token !== undefined) {
+      return {
+        redirect: {
+          destination: "/overview",
+          permanent: false,
+        },
+      }
     }
     return {
-        props: {
-        }
+      props: {
+        current: 'overview',
+        authState: true
+      }
     }
-}
+  }
+)
 
 export default Home
