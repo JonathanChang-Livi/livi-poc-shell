@@ -14,7 +14,7 @@ const nextConfig = {
         remotes: {
           dashboard: `dashboard@https://livi-poc-dashboard.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
           dashboardCrash: `dashboardCrash@https://livi-poc-dashboard-crash.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
-          csm: `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
+          // csm: `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
         },
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
@@ -22,7 +22,7 @@ const nextConfig = {
           // './widgets': './component/widget.tsx',
         },
         shared: {
-          'csm/useAuthState': `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
+          // 'csm/useAuthState': `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
         },
       })
     );
