@@ -1,21 +1,20 @@
-import { getCookie } from "cookies-next";
+import { getIronSession } from "iron-session";
 import { NextRequest, NextResponse } from "next/server";
+import { ironOptions } from "./lib/iron-config"
 // import { authState } from "./csm/auth";
 
 const systemUrl: string[] = ['/_next', '/favicon.ico']
 
 const isSystemUrl = (url: string) => systemUrl.map(x => url.includes(x)).reduce((a, b) => a || b)
 
-export function middleware(request: NextRequest) {
-    // console.log(isSystemUrl(request.url))
-    // console.log(!authState && !isSystemUrl(request.url) && !request.nextUrl.href.includes('/login'), `${request.url}`)
-    if (!isSystemUrl(request.url)) {
-        console.log(request.url, 'request.url')
-        console.log(request.cookies.get('auth-token'), `request.cookies.get('auth-token')`)
-        const authState = request.cookies.get('auth-token')
-        // console.log(authState, 'authState')
-        if (!authState && !request.nextUrl.href.includes('/login')) {
-            return NextResponse.redirect(new URL('/login', request.url))
+export const middleware = async (req: NextRequest) => {
+    const res = NextResponse.next();
+    if (!isSystemUrl(req.url)) {
+        const session = await getIronSession(req, res, ironOptions);
+        const { token } = session
+        if (token === undefined && !req.nextUrl.href.includes('/login')) {
+            return NextResponse.redirect(new URL('/login', req.url))
         }
     }
+    return res
 }

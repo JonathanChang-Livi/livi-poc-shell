@@ -5,14 +5,16 @@ const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config, options) => { // webpack configurations
-    const { isServer } = options;
+    const { isServer, dev } = options;
+
+    //MF setup
     config.plugins.push(
       new NextFederationPlugin({
         name: 'shell',
         remotes: {
           dashboard: `dashboard@https://livi-poc-dashboard.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
           dashboardCrash: `dashboardCrash@https://livi-poc-dashboard-crash.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
-          // widget3: `widget3@https://livi-poc-widget3.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
+          csm: `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
         },
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
@@ -20,16 +22,7 @@ const nextConfig = {
           // './widgets': './component/widget.tsx',
         },
         shared: {
-          // "react": {
-          //   singleton: true,
-          //   strictVersion: true,
-          //   version: '18.2.0'
-          // },
-          // "react-dom": {
-          //   singleton: true,
-          //   strictVersion: true,
-          //   version: '18.2.0'
-          // }
+          'csm/useAuthState': `csm@https://livi-poc-csm.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
         },
       })
     );

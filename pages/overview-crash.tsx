@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from "next"
 import { CrashedDashboard } from "../components/dashboard"
 import ErrorBoundary from "../components/error-boundary"
+import { withSessionSsr } from "../lib/with-session"
 
 const Dashboard: NextPage = () => {
     return (
@@ -10,22 +11,22 @@ const Dashboard: NextPage = () => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const authState = ctx.req.cookies['auth-token']
-    if (!authState) {
+export const getServerSideProps: GetServerSideProps = withSessionSsr(
+    async function getServerSideProps({req}) {
+        if (req.session.token === undefined) {
+            return {
+                redirect: {
+                    destination: "/login",
+                    permanent: true,
+                },
+            }
+        }
         return {
-            redirect: {
-                destination: '/login',
-                permanent: true
+            props: {
+                current: 'overview-crash',
             }
         }
     }
-    return {
-        props: {
-            current: 'overview-crash',
-            authState
-        }
-    }
-}
+)
 
 export default Dashboard

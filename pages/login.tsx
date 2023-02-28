@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from "next"
 import LoginCard from "../components/login-card"
+import { withSessionSsr } from "../lib/with-session"
 
 const Login: NextPage = () => {
     return (
@@ -11,20 +12,21 @@ const Login: NextPage = () => {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    let authState = ctx.req.cookies['auth-token']
-    if (authState) {
+export const getServerSideProps: GetServerSideProps = withSessionSsr(
+    async function getServerSideProps({req}) {
+        if (req.session.token !== undefined) {
+            return {
+                redirect: {
+                    destination: "/overview",
+                    permanent: false,
+                },
+            }
+        }
         return {
-            redirect: {
-                destination: "/overview",
-                permanent: false,
-            },
+            props: {
+            }
         }
     }
-    return {
-        props: {
-        }
-    }
-}
+)
 
 export default Login

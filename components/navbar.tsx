@@ -1,8 +1,6 @@
-import { IconArrowsDiff, IconBriefcase, IconBulbFilled, IconCarCrash,  IconChartPieFilled, IconFileText, IconFriends, IconMoneybag, IconSettingsFilled, IconTicket, IconZoomQuestion } from "@tabler/icons-react"
-import { deleteCookie } from "cookies-next"
-import { Button, Card, CardBody, Stack, Title } from "livi-poc-core"
+import { IconArrowsDiff, IconBriefcase, IconBulbFilled, IconChartPieFilled, IconFileText, IconFriends, IconMoneybag, IconSettingsFilled, IconTicket, IconZoomQuestion } from "@tabler/icons-react"
+import { Button, Title } from "livi-poc-core"
 import Link from "next/link"
-import { Router } from "next/router"
 import React from "react"
 
 interface NavbarProps {
@@ -53,8 +51,11 @@ const DEFAULT_NAV: NavTabProps[] = [
     { tab: 'help-center', title: 'Help Center', icon: <IconZoomQuestion size={24} className={iconClass} /> },
 ]
 
-const logOut = () => {
-    deleteCookie('auth-token')
+const logOut = async () => {
+
+    await fetch("/api/logout", {
+        method: "POST"
+    });
     window.location.reload()
 }
 

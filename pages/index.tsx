@@ -1,4 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
+//@ts-ignore
+import { useAuthState } from "csm/useAuthState"
 
 const Home: NextPage = () => {
   return (
@@ -27,6 +29,7 @@ const Home: NextPage = () => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     let authState = ctx.req.cookies['auth-token']
+    const auth = useAuthState()
     if (authState) {
         return {
             redirect: {

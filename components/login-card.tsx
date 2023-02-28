@@ -1,10 +1,11 @@
-import { deleteCookie, getCookie, setCookie } from "cookies-next"
 import Link from "next/link"
-import Router from "next/router"
-// import { setAuthState } from "../csm/auth"
 
-const login = () => {
-    setCookie('auth-token', 'sss')
+const login = async () => {
+    
+
+    await fetch("/api/login", {
+        method: "POST"
+    });
     window.location.reload()
 }
 
