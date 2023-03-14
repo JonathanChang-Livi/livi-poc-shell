@@ -1,8 +1,6 @@
 import Link from "next/link"
 
 const login = async () => {
-    
-
     await fetch("/api/login", {
         method: "POST"
     });
